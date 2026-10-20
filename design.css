@@ -1,0 +1,182 @@
+/* Spec colors from the wireframe */
+:root {
+  --header-bg: #333333;
+  --card-bg: #E0E0E0;
+  --page-bg: #f3f3f3;
+  --image-bg: #666666;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page-bg);
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000;
+}
+
+/* ---------- Header: 100% width, 102px high ---------- */
+.header {
+  width: 100%;
+  height: 102px;
+  background: var(--header-bg);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.header__title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* ---------- Page content: 32px padding ---------- */
+.main {
+  padding: 32px;
+}
+
+/* ---------- Filters ---------- */
+.filters {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filter label {
+  font-size: 14px;
+}
+
+.filter input,
+.filter select {
+  height: 49.6px;
+  padding: 0 14px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.filter__name       { width: 244px; }
+.filter__region     { width: 150px; }
+.filter__population { width: 180px; }
+
+.filter input::placeholder {
+  color: #777;
+}
+
+/* keep the up/down spinner visible like the wireframe */
+.filter__population::-webkit-inner-spin-button,
+.filter__population::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+.filter small {
+  font-size: 10px;
+  color: #555;
+}
+
+/* ---------- Grid: 4 columns of 1fr, 20px gap ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.country-card {
+  background: var(--card-bg);
+  border: 1px solid #999;
+  padding: 28.8px;
+  min-height: 336px;
+}
+
+/* image placeholder: 200px x 105px */
+.country-card__img {
+  width: 200px;
+  height: 105px;
+  background: var(--image-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.country-card__img svg {
+  width: 74px;
+  height: 59px;
+}
+
+.country-card__name {
+  margin: 14px 0 4.32px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.country-card__info {
+  margin: 4.32px 0 0;
+  font-size: 14px;
+}
+
+.country-card__info b {
+  font-weight: 700;
+}
+
+/* ---------- Show More: 38.4px high, 10px below grid ---------- */
+.show-more {
+  display: block;
+  margin-top: 10px;
+  width: 160px;
+  height: 38.4px;
+  border: none;
+  border-radius: 4px;
+  background: var(--image-bg);
+  color: #fff;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 800px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .filters { flex-wrap: wrap; }
+}
+
+@media (max-width: 520px) {
+  .grid { grid-template-columns: 1fr; }
+  .main { padding: 20px; }
+}
+
+.error-message {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 24px;
+  font-size: 16px;
+  color: #555;
+}
+
+.country-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.show-more[hidden] {
+  display: none;
+}
